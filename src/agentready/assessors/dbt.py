@@ -13,7 +13,6 @@ from ..models.finding import Citation, Finding, Remediation
 from ..models.repository import Repository
 from .base import BaseAssessor
 
-
 # ============================================================================
 # Shared Utility Functions
 # ============================================================================
@@ -700,13 +699,13 @@ class DbtProjectStructureAssessor(BaseAssessor):
 
         evidence = [
             f"Structure score: {structure_score:.0f}/100",
-            f"  - models/ directory: ✓",
+            "  - models/ directory: ✓",
             f"  - staging/ layer: {'✓' if has_staging else '✗'}",
             f"  - marts/ layer: {'✓' if has_marts else '✗'}",
         ]
 
         if has_intermediate:
-            evidence.append(f"  - intermediate/ layer: ✓ (bonus)")
+            evidence.append("  - intermediate/ layer: ✓ (bonus)")
 
         evidence.append(f"  - tests/ directory: {'✓' if has_tests else '✗'}")
         evidence.append(f"  - macros/ directory: {'✓' if has_macros else '✗'}")

@@ -1,7 +1,8 @@
 """Unit tests for dbt assessors."""
 
-import pytest
 from pathlib import Path
+
+import pytest
 
 from agentready.assessors.dbt import (
     DbtDataTestsAssessor,
@@ -13,7 +14,6 @@ from agentready.assessors.dbt import (
     _parse_yaml_safe,
 )
 from agentready.models.repository import Repository
-
 
 # ============================================================================
 # Test Fixtures
