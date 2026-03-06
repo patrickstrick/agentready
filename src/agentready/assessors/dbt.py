@@ -203,8 +203,7 @@ class DbtProjectConfigAssessor(BaseAssessor):
                 "dbt init <project_name>  # Create new dbt project",
                 "dbt debug  # Validate dbt_project.yml configuration",
             ],
-            examples=[
-                """# Minimal valid dbt_project.yml
+            examples=["""# Minimal valid dbt_project.yml
 name: 'my_dbt_project'
 config-version: 2
 profile: 'default'
@@ -221,8 +220,7 @@ require-dbt-version: ">=1.0.0"
 # Model configuration
 models:
   my_dbt_project:
-    materialized: view"""
-            ],
+    materialized: view"""],
             citations=[
                 Citation(
                     source="dbt Labs Documentation",
@@ -327,7 +325,9 @@ class DbtModelDocumentationAssessor(BaseAssessor):
                     documented_models.add(model_name)
 
         documented_count = len(documented_models)
-        coverage_percent = (documented_count / total_models) * 100 if total_models > 0 else 0
+        coverage_percent = (
+            (documented_count / total_models) * 100 if total_models > 0 else 0
+        )
 
         # Calculate proportional score
         score = self.calculate_proportional_score(
@@ -371,8 +371,7 @@ class DbtModelDocumentationAssessor(BaseAssessor):
                 "dbt docs generate  # Generate documentation site",
                 "dbt docs serve  # View documentation locally",
             ],
-            examples=[
-                """# models/staging/schema.yml
+            examples=["""# models/staging/schema.yml
 version: 2
 
 models:
@@ -389,8 +388,7 @@ models:
       - name: customer_name
         description: Full name of the customer
       - name: created_at
-        description: Timestamp when customer record was created"""
-            ],
+        description: Timestamp when customer record was created"""],
             citations=[
                 Citation(
                     source="dbt Labs Documentation",
@@ -515,7 +513,9 @@ class DbtDataTestsAssessor(BaseAssessor):
                         break  # Found PK tests for this model
 
         tested_count = len(models_with_pk_tests)
-        coverage_percent = (tested_count / total_models) * 100 if total_models > 0 else 0
+        coverage_percent = (
+            (tested_count / total_models) * 100 if total_models > 0 else 0
+        )
 
         # Check for singular tests (bonus)
         tests_dir = repository.path / "tests"
@@ -567,8 +567,7 @@ class DbtDataTestsAssessor(BaseAssessor):
                 "dbt test --select <model>  # Test specific model",
                 "dbt test --select test_type:generic  # Run generic tests only",
             ],
-            examples=[
-                """# models/staging/schema.yml
+            examples=["""# models/staging/schema.yml
 version: 2
 
 models:
@@ -592,8 +591,7 @@ models:
         tests:
           - not_null
           - dbt_utils.accepted_range:
-              min_value: 0"""
-            ],
+              min_value: 0"""],
             citations=[
                 Citation(
                     source="dbt Labs Documentation",
@@ -711,7 +709,9 @@ class DbtProjectStructureAssessor(BaseAssessor):
         evidence.append(f"  - macros/ directory: {'✓' if has_macros else '✗'}")
 
         if is_flat:
-            evidence.append(f"  - ⚠ Flat structure: {len(root_sql_files)} files in models/ root")
+            evidence.append(
+                f"  - ⚠ Flat structure: {len(root_sql_files)} files in models/ root"
+            )
 
         return Finding(
             attribute=self.attribute,
@@ -742,8 +742,7 @@ class DbtProjectStructureAssessor(BaseAssessor):
                 "# Manually reorganize directory structure",
                 "# Update model references: ref('staging/stg_customers')",
             ],
-            examples=[
-                """# Recommended dbt project structure:
+            examples=["""# Recommended dbt project structure:
 my_dbt_project/
 ├── dbt_project.yml
 ├── models/
@@ -768,8 +767,7 @@ my_dbt_project/
 ├── macros/                # Reusable SQL logic
 │   └── cents_to_dollars.sql
 ├── seeds/                 # CSV reference data
-└── analyses/              # Ad-hoc analyses"""
-            ],
+└── analyses/              # Ad-hoc analyses"""],
             citations=[
                 Citation(
                     source="dbt Labs Best Practices",

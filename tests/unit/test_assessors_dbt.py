@@ -23,7 +23,9 @@ from agentready.models.repository import Repository
 @pytest.fixture
 def minimal_valid_repo(tmp_path):
     """Minimal valid dbt project."""
-    fixture_dir = Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "minimal_valid"
+    fixture_dir = (
+        Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "minimal_valid"
+    )
     return Repository(
         path=fixture_dir,
         name="minimal_valid",
@@ -39,7 +41,9 @@ def minimal_valid_repo(tmp_path):
 @pytest.fixture
 def well_structured_repo(tmp_path):
     """Well-structured dbt project with best practices."""
-    fixture_dir = Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "well_structured"
+    fixture_dir = (
+        Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "well_structured"
+    )
     return Repository(
         path=fixture_dir,
         name="well_structured",
@@ -55,7 +59,9 @@ def well_structured_repo(tmp_path):
 @pytest.fixture
 def missing_docs_repo(tmp_path):
     """Valid dbt project but no documentation."""
-    fixture_dir = Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "missing_docs"
+    fixture_dir = (
+        Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "missing_docs"
+    )
     return Repository(
         path=fixture_dir,
         name="missing_docs",
@@ -71,7 +77,9 @@ def missing_docs_repo(tmp_path):
 @pytest.fixture
 def missing_tests_repo(tmp_path):
     """Valid dbt project but no tests."""
-    fixture_dir = Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "missing_tests"
+    fixture_dir = (
+        Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "missing_tests"
+    )
     return Repository(
         path=fixture_dir,
         name="missing_tests",
@@ -87,7 +95,9 @@ def missing_tests_repo(tmp_path):
 @pytest.fixture
 def flat_structure_repo(tmp_path):
     """Valid dbt project but flat structure."""
-    fixture_dir = Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "flat_structure"
+    fixture_dir = (
+        Path(__file__).parent.parent / "fixtures" / "dbt_projects" / "flat_structure"
+    )
     return Repository(
         path=fixture_dir,
         name="flat_structure",
